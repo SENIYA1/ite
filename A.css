@@ -1,0 +1,25 @@
+header {
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(202, 176, 207, 0.87);
+}
+
+.a {
+
+    max-width: 2000px;
+    height: auto;
+    border-radius: 100px;
+    text-align: center;
+}
+
+.b {
+    max-width: 2000px;
+    height: auto;
+    border-radius: 1px;
+    text-align: center;
+
+}
+
+body {
+    background-color: rgba(232, 217, 235, 0.87);
+}
