@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset ="UTF-8">
+        <title>Dynamic Wellness Survey</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', sans-serif;
+    }
+
+    body {
+      height: 100vh; 
+      background: linear-gradient(135deg, #dba5cb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #6a0572;
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+
+    label {
+      font-weight: 500;
+      color: #333;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      
+      border-radius: 12px;
+      background-color: #fff;
+      font-size: 15px;
+    }
+
+    .question {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.question.active {
+  display: block;
+  opacity: 1;
+}
+
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      background: #6a0572;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .thank-you {
+      display: none;
+      text-align: center;
+      color: #6a0572;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    h1{
+        color: rgb(155, 91, 158);
+    }
+  </style>
+</head>
+        <BODY>
+            <div class="container">
+                <h1>College Wellness Survey</h1><br><br>
+                <h3>This form is to ensure that the students in 
+                    our college are in good mental and physical health.<br>
+                    Please answer the following questions honestly.<br>
+                    Your responses will be kept confidential.<br></h3><br>
+
+      <div class="question active" id="q1">
+      <label>1. How would you describe your semester?</label>
+      <select onchange="handleSemesterAnswer(this.value)">
+        <option value="">Select</option> 
+       <option value="smooth">Smooth & Productive</option>
+      
+        <option value="challenging">Slightly Challenging</option>
+        <option value="stressful">Very Stressful</option>
+        <option value="exhausting">Overwhelming & Exhausting</option>
+      </select>
+    </div>
+
+    <div class="question" id="q2a">
+      <label>2. What helped you stay consistent?</label>
+      <select onchange="nextSharedQuestion('q3', this)">
+        <option value="">Select</option>
+        <option>Good routine</option>
+        <option>Supportive friends</option>
+        <option>Self-motivation</option>
+        <option>Faculty support</option>
+      </select>
+    </div>
+
+    <div class="question" id="q2b">
+      <label>2. What could’ve made it better?</label>
+      <select onchange="nextSharedQuestion('q3', this)">
+        <option value="">--Select--</option>
+        <option>More time</option>
+        <option>Better teaching</option>
+        <option>Less pressure</option>
+        <option>Clearer syllabus</option>
+      </select>
+    </div>
+
+    <div class="question" id="q2c">
+      <label>2. What was the biggest challenge?</label>
+      <select onchange="nextSharedQuestion('q3', this)">
+        <option value="">--Select--</option>
+        <option>Deadlines</option>
+        <option>Exams</option>
+        <option>Too many subjects</option>
+        <option>Managing Mental health</option>
+      </select>
+    </div>
+
+    
+    <div class="question" id="q3">
+      <label>3. Are you getting enough rest?</label>
+      <select onchange="nextSharedQuestion('q4', this)">
+        <option value="">--Select--</option>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Sometimes</option>
+      </select>
+    </div>
+
+    <div class="question" id="q4">
+      <label>4. How do you usually cope with stress?</label>
+      <select onchange="nextSharedQuestion('submitBtn', this)">
+        <option value="">--Select--</option>
+        <option>Music / Hobbies</option>
+        <option>Talking to friends</option>
+        <option>I keep it to myself</option>
+        <option>Sleep / Ignore</option>
+      </select>
+    </div>
+
+    <button id="submitBtn" style="display:none" onclick="submitForm()">Submit</button>
+    <div class="thank-you" id="thankYou"> ✨Thank you for completing the survey!✨</div>
+  </div>
+
+  <script>
+    function handleSemesterAnswer(value) {
+     
+      if (value === "smooth") {
+        document.getElementById('q2a').classList.add('active');
+      } else if (value === "challenging") {
+        document.getElementById('q2b').classList.add('active');
+      } else {
+        document.getElementById('q2c').classList.add('active');
+      }
+    }
+
+    function nextSharedQuestion(nextId, selectElem) {
+      if (selectElem.value !== "") {
+        const next = document.getElementById(nextId);
+        if (next) next.classList.add('active');
+        if (nextId === "submitBtn") {
+          document.getElementById('submitBtn').style.display = 'block';
+        }
+      }
+    }
+
+    function submitForm() {
+      document.getElementById('thankYou').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+
+      
+
+               
